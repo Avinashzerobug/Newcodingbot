@@ -3,9 +3,9 @@ package com.encapsulation.access;
 public class ElectricCarAccess {
 	
 	
-	ElectricCar electric;
+	ElectricCar electric=new ElectricCar();
 	
-	public void elonMusk(	ElectricCar electric)
+	public void elonMusk(ElectricCar electric)
 	{	
 	
 	

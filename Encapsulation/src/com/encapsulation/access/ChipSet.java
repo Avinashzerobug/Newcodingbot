@@ -18,67 +18,67 @@ public class ChipSet {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+	 void setName(String name) {
 		this.name = name;
 	}
 	public int getSeries() {
 		return series;
 	}
-	public void setSeries(int series) {
+	 void setSeries(int series) {
 		this.series = series;
 	}
 	public String getCompany() {
 		return company;
 	}
-	public void setCompany(String company) {
+	 void setCompany(String company) {
 		this.company = company;
 	}
 	public int getNoOfVersion() {
 		return noOfVersion;
 	}
-	public void setNoOfVersion(int noOfVersion) {
+	 void setNoOfVersion(int noOfVersion) {
 		this.noOfVersion = noOfVersion;
 	}
 	public boolean isReadiator() {
 		return readiator;
 	}
-	public void setReadiator(boolean readiator) {
+	 void setReadiator(boolean readiator) {
 		this.readiator = readiator;
 	}
 	public int getFps() {
 		return fps;
 	}
-	public void setFps(int fps) {
+	 void setFps(int fps) {
 		this.fps = fps;
 	}
 	public String getChipSet() {
 		return chipSet;
 	}
-	public void setChipSet(String chipSet) {
+	 void setChipSet(String chipSet) {
 		this.chipSet = chipSet;
 	}
 	public String getGraphicsEngine() {
 		return graphicsEngine;
 	}
-	public void setGraphicsEngine(String graphicsEngine) {
+ void setGraphicsEngine(String graphicsEngine) {
 		this.graphicsEngine = graphicsEngine;
 	}
 	public int getMemoryInterface() {
 		return memoryInterface;
 	}
-	public void setMemoryInterface(int memoryInterface) {
+	 void setMemoryInterface(int memoryInterface) {
 		this.memoryInterface = memoryInterface;
 	}
 	public String getSpeed() {
 		return speed;
 	}
-	public void setSpeed(String speed) {
+	 void setSpeed(String speed) {
 		this.speed = speed;
 	}
 	public String getProcessor() {
 		return processor;
 	}
-	public void setProcessor(String processor) {
+	 void setProcessor(String processor) {
 		this.processor = processor;
 	}
 

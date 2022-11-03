@@ -30,7 +30,7 @@ public class GraphicsCard {
 
 
 
-	public void setName(String name) {
+	 void setName(String name) {
 		this.name = name;
 	}
 
@@ -54,7 +54,7 @@ public class GraphicsCard {
 
 
 
-	public void setCompany(String company) {
+	void setCompany(String company) {
 		this.company = company;
 	}
 
@@ -66,7 +66,7 @@ public class GraphicsCard {
 
 
 
-	public void setNoOfVersion(int noOfVersion) {
+	 void setNoOfVersion(int noOfVersion) {
 		this.noOfVersion = noOfVersion;
 	}
 
@@ -78,7 +78,7 @@ public class GraphicsCard {
 
 
 
-	public void setReadiator(boolean readiator) {
+	 void setReadiator(boolean readiator) {
 		this.readiator = readiator;
 	}
 
@@ -90,7 +90,7 @@ public class GraphicsCard {
 
 
 
-	public void setFps(int fps) {
+	 void setFps(int fps) {
 		this.fps = fps;
 	}
 
@@ -102,7 +102,7 @@ public class GraphicsCard {
 
 
 
-	public void setChipSet(String chipSet) {
+	 void setChipSet(String chipSet) {
 		this.chipSet = chipSet;
 	}
 
@@ -126,7 +126,7 @@ public class GraphicsCard {
 
 
 
-	public void setMemoryInterface(int memoryInterface) {
+	 void setMemoryInterface(int memoryInterface) {
 		this.memoryInterface = memoryInterface;
 	}
 
@@ -136,9 +136,7 @@ public class GraphicsCard {
 		return speed;
 	}
 
-
-
-	public void setSpeed(String speed) {
+	 void setSpeed(String speed) {
 		this.speed = speed;
 	}
 
@@ -150,7 +148,7 @@ public class GraphicsCard {
 
 
 
-	public void setProcessor(String processor) {
+	 void setProcessor(String processor) {
 		this.processor = processor;
 	}
 	

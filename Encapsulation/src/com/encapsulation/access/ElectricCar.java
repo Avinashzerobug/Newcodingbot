@@ -18,67 +18,67 @@ public class ElectricCar {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+	 void setName(String name) {
 		this.name = name;
 	}
 	public String getSeries() {
 		return series;
 	}
-	public void setSeries(String series) {
+	 void setSeries(String series) {
 		this.series = series;
 	}
 	public String getCompany() {
 		return company;
 	}
-	public void setCompany(String company) {
+	 void setCompany(String company) {
 		this.company = company;
 	}
 	public int getNoOfVersion() {
 		return noOfVersion;
 	}
-	public void setNoOfVersion(int noOfVersion) {
+   void setNoOfVersion(int noOfVersion) {
 		this.noOfVersion = noOfVersion;
 	}
 	public boolean isReadiator() {
 		return readiator;
 	}
-	public void setReadiator(boolean readiator) {
+	 void setReadiator(boolean readiator) {
 		this.readiator = readiator;
 	}
 	public int getMilage() {
 		return milage;
 	}
-	public void setMilage(int milage) {
+	 void setMilage(int milage) {
 		this.milage = milage;
 	}
 	public String getAi() {
 		return ai;
 	}
-	public void setAi(String ai) {
+	 void setAi(String ai) {
 		this.ai = ai;
 	}
 	public String getBattery() {
 		return battery;
 	}
-	public void setBattery(String battery) {
+	 void setBattery(String battery) {
 		this.battery = battery;
 	}
 	public int getBatteryWeight() {
 		return batteryWeight;
 	}
-	public void setBatteryWeight(int batteryWeight) {
+	 void setBatteryWeight(int batteryWeight) {
 		this.batteryWeight = batteryWeight;
 	}
 	public String getSpeed() {
 		return speed;
 	}
-	public void setSpeed(String speed) {
+	 void setSpeed(String speed) {
 		this.speed = speed;
 	}
 	public String getTireName() {
 		return tireName;
 	}
-	public void setTireName(String tireName) {
+	 void setTireName(String tireName) {
 		this.tireName = tireName;
 	}
 	

@@ -30,8 +30,7 @@ public class EarpodesRunner {
 		System.out.println(po. getSpeed());
 		
 		System.out.println(po. getProcessor());
-		
-		
+	
 		
 		
 		
