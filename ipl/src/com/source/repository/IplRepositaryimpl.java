@@ -2,6 +2,7 @@ package com.source.repository;
 
 import com.source.customexception.ArraySizeIsFullCantAddMore;
 import com.source.dto.IplDto;
+import com.source.runner.IplRepositaryimplRunner;
 
 public class IplRepositaryimpl implements IplRepositary {
 
@@ -23,8 +24,33 @@ public class IplRepositaryimpl implements IplRepositary {
 		index++;
 		
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 		
+	}
+
+
+	@Override
+	public IplDto tempsetName(String tempName) {
+		for(IplDto iplDto: iplDto) /*here "iplDto:" is index and iplDto is array size reference inbuilt java will 
+			                       loop and increment it*/
+		{
+			String tempNames = iplDto.getCaptainName();
+			if(iplDto!=null&&tempNames.equals(tempName))
+			{
+				System.out.println(tempName);
+				System.out.println("Match thing is found");
+				System.out.println(iplDto);
+				
+				return iplDto;
+			}
+		}
+		
+		
+		
+		return IplRepositary.super.tempsetName(tempName); /*at the time of compile time jvm will confuse weather call this (tempName)from class or interface
+		                                                    using the Interface name(IplRepositary) it will call from interface method
+		                                                    upside condition not true then its return this one */
+	
 	}
 
 }

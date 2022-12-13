@@ -18,6 +18,13 @@ public abstract class AbstractAuditDto implements Serializable {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "AbstractAuditDto [createdby=" + createdby + ", localDateTime=" + localDateTime + ", updatedBy="
+				+ updatedBy + ", updatedDateTime=" + updatedDateTime + "]";
+	}
+
+
 	public String getCreatedby() {
 		return createdby;
 	}

@@ -86,7 +86,16 @@ public class IplDto extends AbstractAuditDto {
 	}
 	
 	
-	
+  public void display()
+  {
+	  
+	  System.out.println(this.captainName);
+	  System.out.println(this.teamName);
+	  System.out.println(this.ownerAlive);
+	  System.out.println(this.purse);
+	  System.out.println(this.wins);
+	  System.out.println(this.defeats);
+  }
 	
 	
 	

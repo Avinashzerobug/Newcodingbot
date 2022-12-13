@@ -12,5 +12,15 @@ public interface IplRepositary {
 	{		
 		return 0;
 	}
+
+	
+	default IplDto tempsetName (String tempName)
+	{
+		return null;
+		
+	}
+	
+	
+	
 	
 }

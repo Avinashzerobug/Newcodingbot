@@ -29,7 +29,6 @@ public class IplRepositaryimplRunner {
 	repositary.create(ipl);
 	
 	System.out.println(System.lineSeparator());
-	
 	ipl.setCaptainName("Virat Kholi");
 	ipl.setDefeats(0);
 	ipl.setOwnerAlive(true);
@@ -40,6 +39,7 @@ public class IplRepositaryimplRunner {
 	ipl.setUpdatedBy("Avinash Assassin");
 	ipl.setCreatedDateTime(LocalDateTime.now());
 	ipl.setUpdatedDateTime(LocalDateTime.now());
+	ipl.display();
 	repositary.create(ipl);
 	
 	System.out.println(System.lineSeparator());		
@@ -54,6 +54,7 @@ public class IplRepositaryimplRunner {
 	ipl.setUpdatedBy("Avinash Assassin");
 	ipl.setCreatedDateTime(LocalDateTime.now());
 	ipl.setUpdatedDateTime(LocalDateTime.now());
+	ipl.display();
 	repositary.create(ipl);
 	
 	System.out.println(System.lineSeparator());		
@@ -157,8 +158,8 @@ public class IplRepositaryimplRunner {
 	repositary.create(ipl);
 	
 	
-	
-	
+repositary.tempsetName("Desmond");
+	// System.out.println(ref1);
 	
 	}
 
