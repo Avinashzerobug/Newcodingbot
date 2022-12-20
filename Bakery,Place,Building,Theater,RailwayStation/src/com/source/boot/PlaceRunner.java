@@ -34,6 +34,11 @@ public class PlaceRunner {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally
+		{
+			System.out.println("if exceptin occurs the execution will continue ...*this sentence determines the i'm using the finally keyword to continue the execution program");
+		}
+		 
 		
 	}
 
