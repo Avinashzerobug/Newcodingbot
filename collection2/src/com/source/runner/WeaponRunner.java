@@ -57,7 +57,7 @@ public class WeaponRunner {
 		
 
 	    System.out.println(System.lineSeparator());
-	    dtos.stream().sorted((a1,a2)->Double.compare(a1.getPrice(),a2.getPrice())).forEach(e->System.out.println(e.getPrice()));
+	    dtos.stream().filter(ele->ele.getPrice()>500).sorted((a1,a2)->Double.compare(a1.getPrice(),a2.getPrice())).forEach(e->System.out.println(e.getPrice()));
 	    
 	    System.out.println(System.lineSeparator());
 	    dtos.stream().sorted((a1,a2)->Double.compare(a2.getPrice(),a1.getPrice())).forEach(e->System.out.println(e.getPrice()));
