@@ -11,7 +11,7 @@ public class SoldierRunner {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		SoldierDTO dto = new SoldierDTO ("Avinash","India",505,"Soldier THING","one Thousand",007);
+		SoldierDTO dto = new SoldierDTO ("Sahana","India",505,"Soldier +","one Thousand",007);
 		SoldierServiceImpl service= new SoldierServiceImpl();
 		SoldierRepo repo = new SoldierRepoImpl();
 		service.setSoldierRepo(repo);
