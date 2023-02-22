@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body 
+{
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+	background: url(file:///C:/Users/Lenovo/eclipse-workspace/aeroplane/src/main/webapp/images/Airplane-Desktop-Wallpaper-Free.jpeg);
+	background-size: cover;
+}
