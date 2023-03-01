@@ -1,0 +1,34 @@
+package com.source.vinay.configuration;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+@Configuration
+@ComponentScan("com.source.vinay")
+public class SpaceStationConfiguration {
+
+	
+	public SpaceStationConfiguration() {
+		super();
+		// TODO Auto-generated constructor stub
+		System.out.println("Creating the space station configuration class");
+	}
+	
+	@Bean
+	public ViewResolver viewResolver()
+	{
+		System.out.println("Running success view resolver");
+		return new InternalResourceViewResolver("/",".jsp");
+	}
+	
+    @Bean
+	public LocalContainerEntityManagerFactoryBean containerEntityManagerFactoryBean()
+	{
+		System.out.println("Creating the entity manager facotry");
+		 return new LocalContainerEntityManagerFactoryBean();
+	}
+}
