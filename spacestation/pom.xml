@@ -4,7 +4,7 @@
   <artifactId>vinay</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
-		<spring.version>5.3.24</spring.version>
+		<spring.version>5.3.24</spring.version>  <!--to spring initialize...-->
 		<lombok.version>1.18.24</lombok.version>
 		<quarkus.version>1.13.7.Final</quarkus.version>
 		<hibernate.version>5.6.15.Final</hibernate.version>
@@ -15,22 +15,22 @@
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-hibernate-validator</artifactId>
-			<version>${quarkus.version}</version>
+			<version>${quarkus.version}</version> <!--its for validation-->
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
+			<artifactId>servlet-api</artifactId>  <!--TO handle request and respond-->
 			<version>2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
+			<artifactId>lombok</artifactId>     <!-- to use setter,getter,not nul.....etc using annotation ...using predefined annotation-->
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
+			<artifactId>spring-webmvc</artifactId><!--Web module view controller-->
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -41,24 +41,24 @@
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
+			<artifactId>hibernate-core</artifactId> <!--its for convert for object to values....-->
 			<version>${hibernate.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
+			<artifactId>spring-orm</artifactId> <!--its for convert for object to values....it wil write query to convert object to value-->
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
+			<artifactId>mysql-connector-java</artifactId> <!-- to connect java to my sql...using persistence.xml-->
 			<version>${mysql.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
+			<artifactId>jstl</artifactId>  <!--to use java prorperties in jsp file...Example - for each in jsp file-->
 			<version>${jstl.verison}</version>
 		</dependency>
 		<dependency>
@@ -72,7 +72,7 @@
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
+        <artifactId>maven-compiler-plugin</artifactId> <!--to exlplain JDK version-->
         <version>3.8.1</version>
         <configuration>
           <source>1.8</source>
@@ -80,8 +80,12 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-war-plugin</artifactId>
+        <artifactId>maven-war-plugin</artifactId>  <!-- it will check war files in your project-->
         <version>3.2.3</version>
+        <!-- tag name  Configuration 
+        <configuration>             ================) if war files not available then use this tag
+			<failOnMissingWebXml>false</failOnMissingWebXml>
+		</configuration> -->
       </plugin>
     </plugins>
   </build>

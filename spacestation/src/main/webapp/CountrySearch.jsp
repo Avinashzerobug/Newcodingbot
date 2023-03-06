@@ -10,7 +10,7 @@
 <body>
 	<h1>Welcome to the SkyRoot space station</h1>
 	<h2>confirm your destination by search country name here</h2>
-
+ 
 	<form action="searchbycountry" method="get">
 		Search by country <input type="text" name="countries" /> <input
 			type="submit" value="search" />
@@ -25,6 +25,7 @@
 			<th>astranuatNames</th>
 			<th>Cost</th>
 			<th>Edit</th>
+			<th>Delete</th>
 		</tr>
 		<c:forEach items="${list}" var="c">
 			<tr>
@@ -35,7 +36,7 @@
 				<td>${c.astranuatNames}</td>
 				<td>${c.cost}</td>
 				<td><a href="spaceup?id=${c.id}">Edit</a></td>
-
+                <td><a href="delete?id=${c.id}">delete</a></td>
 			</tr>
 
 

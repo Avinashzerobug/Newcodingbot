@@ -9,11 +9,27 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
   <link rel="icon" type = "image/x-icon" href="https://icons8.com/icon/80833/laptop">
+  <style>
+    body{
+       
+       background-image: url('https://wallpaperaccess.com/full/4462276.jpg');
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size: 100% 100%;
+    
+    }
+  
+ 
+  
+  
+  </style>
+  
+  
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-body-tertiary"  class="navbar bg-dark" data-bs-theme="dark">
+  <div class="container-fluid" >
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -57,6 +73,9 @@
     </div>
   </div>
 </nav>
+
+
+
 
 </body>
 </html>

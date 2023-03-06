@@ -85,6 +85,22 @@ public class SpaceStationRepoImpl implements SpaceStationRepo {
 			manager.close();
 		}
 	}
+
+	@Override
+	public boolean deleteSpace(int id) {
+		// TODO Auto-generated method stub
+		EntityManager manager = this.entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		SpaceStationEntity entity = manager.find(SpaceStationEntity.class, id);
+		
+		transaction.begin();
+		manager.remove(entity);
+		transaction.commit();
+		manager.close();
+		
+		return true;
+		
+	}
 	
    
 }

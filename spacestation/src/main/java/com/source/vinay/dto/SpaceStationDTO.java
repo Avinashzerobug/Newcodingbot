@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+                                                 //to transfer data to service and for check validation
 @Data
 @NoArgsConstructor
 public class SpaceStationDTO {

@@ -93,19 +93,18 @@ public class SpaceStationController {
 	@GetMapping("spaceup")
 	public String onUpDate(@RequestParam int id,Model model)
 	{
+		
 		System.out.println("Running the update:"+ id);
 		SpaceStationDTO dto = this.service.findById(id);
 		model.addAttribute("dto", dto);
 		model.addAttribute("countries", dto.getCountries());
-		model.addAttribute("astranuatNames", dto.getAstranuatNames());
+		List<String> astranuatName = Arrays.asList("Buzz Aldrin", "Michael Collins", "Niel Armastrong");
+		model.addAttribute("astranuatName",astranuatName);
 		model.addAttribute("noOfStation", dto.getNoOfStation());
 		
 		return "UpdateSpace";
-		
-		
-		
 	}
-	
+	 
 	
 	
 	
@@ -128,6 +127,17 @@ public class SpaceStationController {
 		
 	}
 	
+	
+	@GetMapping("delete")
+	public String deleteSpace(@RequestParam int id,Model model)
+	{
+	 boolean dto =   this. service.deleteSpace(id);
+	model.addAttribute("id",id);
+	 model.addAttribute("message", "Delete is initalize");
+		return "Delete";
+		
+		
+	}
 	
 	
 	

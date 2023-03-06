@@ -26,7 +26,7 @@ public class SpaceStationConfiguration {
 	}
 	
     @Bean
-	public LocalContainerEntityManagerFactoryBean containerEntityManagerFactoryBean()
+	public LocalContainerEntityManagerFactoryBean containerEntityManagerFactoryBean() //to connect sql to spring
 	{
 		System.out.println("Creating the entity manager facotry");
 		 return new LocalContainerEntityManagerFactoryBean();

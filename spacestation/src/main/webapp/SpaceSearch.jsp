@@ -20,6 +20,9 @@
 	Search By Id <input type="text" name="id"/>
 	<input type="submit" value="search" class="btn btn-primary"/>
 	</form>
+	
+	
+	
 	<div>
 
 
@@ -30,6 +33,8 @@
 	noOfStation : ${dto.noOfStation}
 	astranuatNames: ${dto.astranuatNames}<br>
 	</div>
+
+
 
 </body>
 </html>

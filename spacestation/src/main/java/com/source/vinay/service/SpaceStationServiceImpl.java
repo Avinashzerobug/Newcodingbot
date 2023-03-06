@@ -43,7 +43,7 @@ public class SpaceStationServiceImpl implements SpaceStationService {
 			{
 				System.out.println("Entity SpaceStation is founded by id:"+id);
 				SpaceStationDTO dto = new SpaceStationDTO();
-				dto.setName(entity.getName());
+				dto.setName(entity.getName());            //to convert the data entity to dto using the set method
 				dto.setNoOfStation(entity.getNoOfStation());
 				dto.setAstranuatNames(entity.getAstranuatNames());
 				dto.setCost(entity.getCost());
@@ -58,9 +58,9 @@ public class SpaceStationServiceImpl implements SpaceStationService {
 	@Override
 	public Set<ConstraintViolation<SpaceStationDTO>> validateAndSave(SpaceStationDTO dto) {
 		// TODO Auto-generated method stub
-		ValidatorFactory validator = Validation.buildDefaultValidatorFactory();
+		ValidatorFactory validator = Validation.buildDefaultValidatorFactory(); //its use for validate the data
 		Validator validator2 = validator.getValidator();
-		Set<ConstraintViolation<SpaceStationDTO>> violation = validator2.validate(dto);
+		Set<ConstraintViolation<SpaceStationDTO>> violation = validator2.validate(dto); //passing the ref(dto) to which class should be validate
 		if(violation!=null && !violation.isEmpty())
 		{
 			System.out.println("Something error in dto:"+dto);
@@ -153,6 +153,15 @@ public class SpaceStationServiceImpl implements SpaceStationService {
 			return Collections.emptySet();
 					
 		}
+		
+	}
+
+	@Override
+	public boolean deleteSpace(int id) {
+		// TODO Auto-generated method stub
+	
+		boolean  delete =repo.deleteSpace(id);
+		return true;
 		
 	}
 	

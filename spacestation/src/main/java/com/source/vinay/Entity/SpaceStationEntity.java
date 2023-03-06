@@ -15,6 +15,7 @@ import lombok.Data;
 @Entity
 @Table(name = "space_table")
 @NamedQuery(name = "findByCountries", query = "select entity from SpaceStationEntity entity where entity.countries=:count")
+
 public class SpaceStationEntity {
 
 	@Id

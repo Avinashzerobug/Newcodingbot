@@ -26,6 +26,8 @@ public interface SpaceStationRepo {
 	{
 		return true;
 	}
+
+	boolean deleteSpace(int id);
 	
 	
 	

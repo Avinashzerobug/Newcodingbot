@@ -29,5 +29,7 @@ public interface SpaceStationService {
 
 	Set<ConstraintViolation<SpaceStationDTO>> validateAndUpdate(SpaceStationDTO dto);
 
+	boolean deleteSpace(int id);
+
 }
 
