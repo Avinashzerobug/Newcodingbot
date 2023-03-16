@@ -6,38 +6,111 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+  <link rel="icon" type = "image/x-icon" href="https://icons8.com/icon/80833/laptop">
 </head>
+<style>
+body {
+	background-image:
+		url('https://i0.wp.com/indiaeducationdiary.in/wp-content/uploads/2022/07/nasa_space_apps_challenge_registration_image_07142022.png?fit=985%2C554&ssl=1');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+.register {
+
+  background-color: 	--bs-primary-bg-subtle;
+}
+
+.bg-img {
+ 
+ background-image: url("http://open.canada.ca/sites/default/files/2020-07/space_apps_covid19_banner.png");
+
+}
+
+</style>
+
+
 <body>
-
-  <h1>Update your Data here and verfiy it</h1>
-
- <form action = "spaceup" method = "post"> 
   
-  <pre>
+  <div class="bg-img">
+   <nav class="navbar bg-body-tertiary"  class="navbar bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://cdn1.vectorstock.com/i/1000x1000/52/95/logo-with-abstract-image-of-cosmic-station-space-vector-19205295.jpg" alt="Logo" width="48" height="36" class="d-inline-block align-text-top">
+      Space-World
+    </a>
+   
+   <div class="btn-group">
+ 
+  <a href="SpaceSearch.jsp" class="btn btn-primary">Verification ID</a>
+  <a href="index.jsp" class="btn btn-primary">HOME</a>
+</div>
+  </div> 
+ </nav>
+  </div>
+
+
+
+
+
+
+
+    <span class="placeholder col-12 bg-light">
+    	<h1 color>WELCOME TO THE INTERNAIONAL SPACE STATION</h1>
+    
+    </span>
+
+
+
+
+	<form action="space" method="post">
+
+		<pre>
   
-    <c:forEach items = "${errors}" var = "e">
-    <span style = "color:red;">${e.message}</span>
+    <c:forEach items="${errors}" var="e">
+    <span style="color: red;">${e.message}</span>
     </c:forEach>
   
-        ID                     <input type="text" name="id" value = "${dto.id}">
-        Name                   <input type="text" name="name" value = "${dto.name}"> 
-	Countries              <input type="text" name="countries" value = "${dto.countries}"> 
-	Cost                   <input type="number" name="cost" value = "${dto.cost}"> 
-	Number of station      <input type="text" name="noOfStation" value = "${dto.noOfStation}">
-	Astranaut names        <select class="form-select"
+   
+     
+  <label for="exampleFormControlInput1" class="btn btn-primary"  value = "${dto.id}">ID</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name" name = "name" >
+   
+   
+  <label for="exampleFormControlInput1" class="btn btn-primary"  value = "${dto.name}">Name</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name" name = "name" >
+
+  <label for="exampleFormControlInput1"  class="btn btn-primary" value = "${dto.countries}">Countries</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Countries" name = "countries" >
+
+  <label for="exampleFormControlInput1"  class="btn btn-primary">Cost</label>
+  <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter your minimum cost" name = "cost" >
+
+  <label for="exampleFormControlInput1"  class="btn btn-primary">Number of station</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your station number" name = "noOfStation" >
+
+  <label class="btn btn-primary"> Astranaut names</label> 
+    <select class="form-select" 
     aria-label="Default select example" name="astranuatNames" >
-	  <option selected value=""> selected type</option>
+    
+	  <option selected value=""  class="btn btn-primary"> selected type</option>
 	<c:forEach items="${astranuatName}" var="t">
 	<option value="${t}">${t}</option>
 	</c:forEach>
 	</select>
-	
-    <input type="submit" value="Update" class = "btn btn-primary" />
+
+
+
+ <input type="submit" value="Click To Save">
 
 </pre>
-  </form>
-
+	</form>
 
 
 </body>
+
 </html>

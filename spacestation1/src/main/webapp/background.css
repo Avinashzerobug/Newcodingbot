@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+body {
+    background-image: url("istockphoto-1362967310-170667a.jpg");
+}
+.no-background {
+    background-image: url("istockphoto-1362967310-170667a.jpg");
+}
