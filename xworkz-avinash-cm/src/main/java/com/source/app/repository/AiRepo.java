@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.source.app.entity.AiEntity;
 
+
 public interface AiRepo {
 
 	boolean saved(AiEntity entity);
@@ -24,4 +25,11 @@ public interface AiRepo {
 	default Long findByMobile(Long num) {
 		return null;
 	}
+	
+	default List<AiEntity> findByUserId(String userId,String password) {
+		return null;
+	}
+
+
+	
 }

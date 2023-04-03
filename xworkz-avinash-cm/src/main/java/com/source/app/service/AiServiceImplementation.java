@@ -1,5 +1,7 @@
 package com.source.app.service;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +16,8 @@ import javax.validation.Validator;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.mail.Authenticator;
@@ -24,6 +28,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.sql.DataSource;
 
 import com.source.app.dto.AiWorld;
 import com.source.app.entity.AiEntity;
@@ -33,10 +38,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class AiServiceImplementation implements AiService {
+public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 
 	@Autowired
 	private AiRepo aiRepo;
+	
+	
 	
 	private Set<ConstraintViolation<AiWorld>> validate(AiWorld userDto) {
 		ValidatorFactory validationFactory = Validation.buildDefaultValidatorFactory();
@@ -142,7 +149,7 @@ public class AiServiceImplementation implements AiService {
 	public Long findByUser(String userId) {
 		Long userCount = this.aiRepo.findByUser(userId);
 		return userCount;
-	}
+	} 
 
 	@Override
 	public boolean sendMail(String email) {
@@ -180,5 +187,48 @@ public class AiServiceImplementation implements AiService {
 		}
 		return false;
 	}
+
+
+
+	@Override
+	public AiWorld mapRow(ResultSet rs, int rowNum) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
+	
+	@Override
+	public List<AiWorld> findByUserId(String userId,String password) {
+		// TODO Auto-generated method stub
+		System.out.println("Running findByNameAndColor in service " + userId + password);
+		
+	
+			List<AiEntity> entities = this.aiRepo.findByUserId(userId, password);
+			List<AiWorld> listOfDTO = new ArrayList<AiWorld>();
+			for(AiEntity entity: entities)
+			{
+				AiWorld dto = new AiWorld();
+				BeanUtils.copyProperties(entity, dto);
+				System.out.println("DTO from copyProperties"+dto);
+				listOfDTO.add(dto);
+				log.info(dto.getPassword());
+				log.info(dto.getUserId());
+			}
+			//System.out.println("Size in dtos " + listOfDTO.size());
+			System.out.println("size in entities " + entities.size());
+			return listOfDTO;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
 }

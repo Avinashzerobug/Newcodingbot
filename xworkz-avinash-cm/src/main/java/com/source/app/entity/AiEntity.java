@@ -19,6 +19,7 @@ import lombok.Data;
 @NamedQuery(name = "userId",query = "select count(*) from  AiEntity ent where ent.userId=:userBy")
 @NamedQuery(name = "emailId",query = "select count(*) from  AiEntity ent where ent.email=:emailBy")
 @NamedQuery(name = "mobileId",query = "select count(*) from  AiEntity ent where ent.num=:mobileBy")
+@NamedQuery(name = "userIdAndPassword",query = "select entity from AiEntity entity where entity.userId=:userBy and entity.password=:passwordBy")
 public class AiEntity {
 
 	@Id

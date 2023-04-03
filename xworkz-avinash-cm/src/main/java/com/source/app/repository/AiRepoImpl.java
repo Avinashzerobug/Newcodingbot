@@ -105,5 +105,35 @@ public Long findByMobile(Long num) {
 		em.close();
 	}
 }
+
+@Override
+public List<AiEntity> findByUserId(String userId,String password) {
+	// TODO Auto-generated method stub
+	EntityManager em = this.entityManagerFactory.createEntityManager();
+	try {
+		Query query = em.createNamedQuery("userIdAndPassword");
+		query.setParameter("userBy", userId);
+		query.setParameter("passwordBy", password);
+		Object object = query.getResultList();
+		List<AiEntity> list = query.getResultList();
+		log.info("total found in repo:"+list.size());
+		//Long value = (Long) object;
+		//System.out.println(value);
+	return list;
+
+	} finally {
+		em.close();
+	}
+	
+}
+
+
+
+
+
 }
 	
+
+
+
+

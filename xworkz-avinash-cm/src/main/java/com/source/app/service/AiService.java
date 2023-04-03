@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 
 import com.source.app.dto.AiWorld;
+import com.source.app.entity.AiEntity;
 
 public interface AiService {
 
@@ -32,4 +33,9 @@ public interface AiService {
 	}
 
 	boolean sendMail(String email);
+	
+   default List<AiWorld> findByUserId(String userId,String password)
+   {
+	   return null;
+   }
 }

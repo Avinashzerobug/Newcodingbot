@@ -52,6 +52,7 @@ public class AiConfiguration {
 		return new InternalResourceViewResolver("/",".jsp");
 	}
 	
+    
     public DataSource dataSource() {
 		DriverManagerDataSource datasource = new DriverManagerDataSource();
 		datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");

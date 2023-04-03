@@ -1,5 +1,7 @@
 package com.source.app.controller;
 
+
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -7,11 +9,14 @@ import javax.validation.ConstraintViolation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.source.app.dto.AiWorld;
 import com.source.app.service.AiService;
+
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,4 +50,36 @@ public class AiController {
 		
 	}
 	
+	
+	@GetMapping("searchByUserIdAndPassWord")
+	public String onfindByUserIdPassword(@RequestParam(required = false ) String userId,@RequestParam(required = false ) String password, Model model) {
+		System.out.println("Running on search for name " + userId);
+		AiWorld dto = new AiWorld();
+		List<AiWorld> dto1 = this.service.findByUserId(userId, password);
+			
+			if(!dto1.isEmpty()) {
+				model.addAttribute("userID",userId);
+				model.addAttribute("userPassWord",password);
+				model.addAttribute("list"+dto1);
+				return "LogInSuccess";
+			}else {
+				model.addAttribute("message1", "Data not found");
+				return "index";		
+			
+			
+	
+	}
+	
+	
+	
+	}
 }
+	
+	
+	
+	
+	
+	
+	
+	
+
