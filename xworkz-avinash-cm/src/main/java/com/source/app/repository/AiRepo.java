@@ -3,6 +3,7 @@ package com.source.app.repository;
 import java.util.Collections;
 import java.util.List;
 
+import com.source.app.dto.AiWorld;
 import com.source.app.entity.AiEntity;
 
 
@@ -26,10 +27,12 @@ public interface AiRepo {
 		return null;
 	}
 	
-	default List<AiEntity> findByUserId(String userId,String password) {
+	default AiEntity findByUserId(String userId) {
 		return null;
 	}
 
-
+ /*	default List<AiEntity> findByUserIdies(String userId) {
+		return null;
+	}*/
 	
 }

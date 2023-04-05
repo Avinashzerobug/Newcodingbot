@@ -34,8 +34,14 @@ public interface AiService {
 
 	boolean sendMail(String email);
 	
-   default List<AiWorld> findByUserId(String userId,String password)
+   default AiWorld findByUserId(String userId,String password,Integer logiCount)
    {
 	   return null;
    }
+   
+  
+   /*default AiWorld findByUserIdies(String userId,Integer loginCount,String password)
+   {
+	   return null;
+   }*/
 }

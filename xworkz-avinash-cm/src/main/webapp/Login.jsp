@@ -14,14 +14,14 @@
                 <table align="center">
                     <tr>
                         <td>
-                            <form><label path="userId">UserId: ${userId} </label>
+                            <form><label path="userId">UserId: ${userID} </label>
                            
                             <input path="userId" name="userId" id="userId" />
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <form> <label path="password">Password: ${userPassWord}</label>
+                            <form> <label path="password">Password: ${password}</label>
                        
                             <input path="password" name="password" id="password" />
                         </td>

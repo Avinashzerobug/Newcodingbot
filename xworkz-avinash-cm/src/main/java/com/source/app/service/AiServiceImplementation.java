@@ -16,8 +16,10 @@ import javax.validation.Validator;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.codec.Encoder;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.Authenticator;
@@ -42,6 +44,9 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 
 	@Autowired
 	private AiRepo aiRepo;
+	
+	@Autowired
+    PasswordEncoder passwordEncoder;
 	
 	
 	
@@ -91,10 +96,10 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 			AiEntity entity = new AiEntity();
 			entity.setUserId(aiWorld.getUserId());
 			entity.setSignUpId(aiWorld.getSignUpId());
-			entity.setPassword(aiWorld.getConfirmPassword());
+			entity.setPassword(passwordEncoder.encode(aiWorld.getPassword()));
 			entity.setNum(aiWorld.getNum());
 			entity.setEmail(aiWorld.getEmail());
-			entity.setConfirmPassword(aiWorld.getConfirmPassword());
+			entity.setConfirmPassword(passwordEncoder.encode(aiWorld.getConfirmPassword()));
 			entity.setCreatedBy(aiWorld.getUserId());
 			entity.setCreatedDate(LocalDateTime.now());
 			
@@ -156,7 +161,7 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 		String portNumber = "587";// 485,587,25
 		String hostName = "smtp.office365.com";
 		String fromEmail = "avinashmullur4246@gmail.com";
-		String password = "Rudra@1234";
+		String password = "Avinash@4246";
 		String to = email;
 
 		Properties prop = new Properties();
@@ -199,36 +204,76 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 	
 	
 	@Override
-	public List<AiWorld> findByUserId(String userId,String password) {
+	public AiWorld findByUserId(String userId,String password,Integer loginCount) {
 		// TODO Auto-generated method stub
-		System.out.println("Running findByNameAndColor in service " + userId + password);
-		
-	
-			List<AiEntity> entities = this.aiRepo.findByUserId(userId, password);
-			List<AiWorld> listOfDTO = new ArrayList<AiWorld>();
-			for(AiEntity entity: entities)
-			{
-				AiWorld dto = new AiWorld();
-				BeanUtils.copyProperties(entity, dto);
-				System.out.println("DTO from copyProperties"+dto);
-				listOfDTO.add(dto);
-				log.info(dto.getPassword());
-				log.info(dto.getUserId());
-			}
+			AiEntity entities = this.aiRepo.findByUserId(userId);
+			AiWorld dto = new AiWorld();
+		  		    dto.setUserId(entities.getUserId());
+		    log.info(entities.getUserId());
+		    log.info(entities.getPassword());
+		    log.info("password converting " + passwordEncoder.matches(password, entities.getPassword()));
+		    
+				if(passwordEncoder.matches(password, entities.getPassword())&& entities.getUserId().equals(userId))
+				{
+			
+				
+			      log.info("Valid data");
+			      return dto;
+				
+				}
+				else
+				{
+					//loginCount++;
+					log.info("Invalid userId or password");
+					return null;
+				}
+		   /*     if(loginCount>=3)
+		        {
+		        	log.info("Account is locked");
+		        }*/
+				
+			
+			
 			//System.out.println("Size in dtos " + listOfDTO.size());
-			System.out.println("size in entities " + entities.size());
-			return listOfDTO;
+			
 		
 	}
 	
 	
+/*	@Override
+	public List<AiWorld> findByUserIdies(String userId, Integer loginCount, String password) {
+		// TODO Auto-generated method stub
+		List<AiEntity> entities = this.aiRepo.findByUserIdies(userId);
+		List<AiWorld> listOfDTO = new ArrayList<AiWorld>();
+		AiWorld dto = new AiWorld();
+		AiEntity entity = new AiEntity();
+		if(dto.getLoginCount()>=3)
+		{
+			if(passwordEncoder.matches(password, entity.getPassword()))
+			{
+		for(AiEntity entity1 : entities)
+		{
+			
+			BeanUtils.copyProperties(entity1, dto);
+			System.out.println("DTO from copyProperties"+dto);
+			listOfDTO.add(dto);
+			log.info(dto.getPassword());
+			log.info(dto.getUserId());
+			
+		}
+			}
+			else
+			{
+				loginCount++;
+				log.info("Invalid userId or password");
+			}
+		}
+		return AiService.super.findByUserIdies(userId, loginCount, password);
+	}*/
 	
 	
 	
-	
-	
-	
-	
+
 
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.source.app.dto.AiWorld;
 import com.source.app.entity.AiEntity;
 
 
@@ -107,19 +108,17 @@ public Long findByMobile(Long num) {
 }
 
 @Override
-public List<AiEntity> findByUserId(String userId,String password) {
+public AiEntity findByUserId(String userId) {
 	// TODO Auto-generated method stub
 	EntityManager em = this.entityManagerFactory.createEntityManager();
 	try {
-		Query query = em.createNamedQuery("userIdAndPassword");
+		Query query = em.createNamedQuery("userIdies");
 		query.setParameter("userBy", userId);
-		query.setParameter("passwordBy", password);
-		Object object = query.getResultList();
-		List<AiEntity> list = query.getResultList();
-		log.info("total found in repo:"+list.size());
-		//Long value = (Long) object;
-		//System.out.println(value);
-	return list;
+
+		Object object = query.getSingleResult();
+		AiEntity aiEntity = (AiEntity)object;
+		log.info(""+aiEntity);
+	return aiEntity;
 
 	} finally {
 		em.close();
@@ -128,6 +127,25 @@ public List<AiEntity> findByUserId(String userId,String password) {
 }
 
 
+/*
+@Override
+public List<AiEntity> findByUserIdies(String userId) {
+	// TODO Auto-generated method stub
+	EntityManager em = this.entityManagerFactory.createEntityManager();
+	try {
+		
+		Query query = em.createNamedQuery("userIdies");
+		query.setParameter("userBy", userId);
+		
+		Object object = query.getSingleResult();
+	
+	}
+	finally
+	{
+		em.close();
+	}
+	return AiRepo.super.findByUserIdies(userId);
+}*/
 
 
 

@@ -52,28 +52,28 @@ public class AiController {
 	
 	
 	@GetMapping("searchByUserIdAndPassWord")
-	public String onfindByUserIdPassword(@RequestParam(required = false ) String userId,@RequestParam(required = false ) String password, Model model) {
-		System.out.println("Running on search for name " + userId);
-		AiWorld dto = new AiWorld();
-		List<AiWorld> dto1 = this.service.findByUserId(userId, password);
+	public String onfindByUserIdPassword(@RequestParam(required = false ) String userId,@RequestParam(required = false ) String password,@RequestParam(required = false ) Integer loginCount, Model model) {
+	 
+	//	List<AiWorld> dto2  = this.service.findByUserIdies(userId, loginCount, password);
+		  AiWorld dto = this.service.findByUserId(userId, password, loginCount);
 			
-			if(!dto1.isEmpty()) {
-				model.addAttribute("userID",userId);
-				model.addAttribute("userPassWord",password);
-				model.addAttribute("list"+dto1);
+			if(dto!=null) {
+				model.addAttribute("userID",dto.getUserId());
+				model.addAttribute("password",dto.getPassword());
 				return "LogInSuccess";
 			}else {
 				model.addAttribute("message1", "Data not found");
-				return "index";		
-			
-			
-	
+				return "Login";					
+	}
+
 	}
 	
 	
-	
-	}
 }
+
+
+
+
 	
 	
 	

@@ -26,15 +26,13 @@ public class AiWorld {
 	private long   num;
 	@NotBlank
 	 @NotNull
-	@Size(min = 3, max = 20, message = " password should be minimun 3 or maximum 20 character")
 	private String password;
 	@NotBlank
 	 @NotNull
-	@Size(min = 3, max = 20, message = " confirmPassword should be minimun 3 or maximum 20 character")
 	private String confirmPassword;
 	@Id
 	private int signUpId;
-	
+	private Integer loginCount;
 	
 
 }

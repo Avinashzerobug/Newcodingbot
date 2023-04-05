@@ -12,6 +12,7 @@
 		<jstl.verison>1.2</jstl.verison>
 		<slf4j.version>1.7.25</slf4j.version>
 		<qos.logback.version>1.2.3</qos.logback.version>
+		<Passcode.version>5.3.3.RELEASE</Passcode.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -97,7 +98,11 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-		
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-crypto</artifactId>
+		<version>${Passcode.version}</version>	
+	</dependency>	
 	</dependencies>
   <packaging>war</packaging>
   <build>
