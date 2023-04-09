@@ -52,24 +52,40 @@ public class AiController {
 	
 	
 	@GetMapping("searchByUserIdAndPassWord")
-	public String onfindByUserIdPassword(@RequestParam(required = false ) String userId,@RequestParam(required = false ) String password,@RequestParam(required = false ) Integer loginCount, Model model) {
+	public String onfindByUserIdPassword(@RequestParam(required = false ) String userId,@RequestParam(required = false ) String password, Model model) {
 	 
 	//	List<AiWorld> dto2  = this.service.findByUserIdies(userId, loginCount, password);
-		  AiWorld dto = this.service.findByUserId(userId, password, loginCount);
-			
+		try {
+		  AiWorld dto = this.service.findByUserId(userId, password);
+		  
+		  log.info("Login Count:"+dto.getLoginCount());
+		  if(dto.getLoginCount()>=3)
+		  {
+			  model.addAttribute("msg","Accound has been locked due to so many attempts...try reset password ");
+			  return "Login";
+		  }
 			if(dto!=null) {
 				model.addAttribute("userID",dto.getUserId());
 				model.addAttribute("password",dto.getPassword());
 				return "LogInSuccess";
-			}else {
-				model.addAttribute("message1", "Data not found");
-				return "Login";					
+			}
+		}
+		    catch(Exception e)
+		    {
+		    	log.error(e.getMessage());
+		    }
+		model.addAttribute("match", "UserID or password are not matching");
+		return "Login";	
+		}
+						
 	}
+	
+		
 
-	}
 	
 	
-}
+	
+
 
 
 

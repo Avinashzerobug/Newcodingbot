@@ -109,21 +109,21 @@ public Long findByMobile(Long num) {
 
 @Override
 public AiEntity findByUserId(String userId) {
-	// TODO Auto-generated method stub
-	EntityManager em = this.entityManagerFactory.createEntityManager();
+	log.info("Running findByUserAndPassword in repository ");
+	EntityManager manager = this.entityManagerFactory.createEntityManager();
 	try {
-		Query query = em.createNamedQuery("userIdies");
-		query.setParameter("userBy", userId);
-
-		Object object = query.getSingleResult();
-		AiEntity aiEntity = (AiEntity)object;
-		log.info(""+aiEntity);
-	return aiEntity;
-
+		Query query = manager.createNamedQuery("findByUserId");
+		query.setParameter("user", userId);
+		log.info("query : " + query);
+		Object obj = query.getSingleResult();
+		AiEntity entity = (AiEntity) obj;
+		log.info("Count " + entity);
+		log.info("Duplicates value size" + entity);
+		return entity;
 	} finally {
-		em.close();
+		manager.close();
+		log.info("Released the connection");
 	}
-	
 }
 
 
@@ -146,6 +146,26 @@ public List<AiEntity> findByUserIdies(String userId) {
 	}
 	return AiRepo.super.findByUserIdies(userId);
 }*/
+
+
+@Override
+public boolean findByLogIn(String userId, int count) {
+	log.info("count " + count);
+	EntityManager manager = this.entityManagerFactory.createEntityManager();
+	try {
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		Query query = manager.createNamedQuery("updateLoginCount");
+		query.setParameter("user", userId);
+		query.setParameter("count", count);
+		query.executeUpdate();
+		transaction.commit();
+		return true;
+	} finally {
+		manager.close();
+	}
+
+}
 
 
 

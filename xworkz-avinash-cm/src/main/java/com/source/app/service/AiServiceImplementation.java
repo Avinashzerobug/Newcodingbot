@@ -204,40 +204,44 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 	
 	
 	@Override
-	public AiWorld findByUserId(String userId,String password,Integer loginCount) {
+	public AiWorld findByUserId(String userId,String password) {
 		// TODO Auto-generated method stub
+		log.info("Running userandpassword in service");
+		AiWorld dto = new AiWorld();
 			AiEntity entities = this.aiRepo.findByUserId(userId);
-			AiWorld dto = new AiWorld();
-		  		    dto.setUserId(entities.getUserId());
+			
+			BeanUtils.copyProperties(entities, dto); 		    
 		    log.info(entities.getUserId());
 		    log.info(entities.getPassword());
 		    log.info("password converting " + passwordEncoder.matches(password, entities.getPassword()));
 		    
+		    if(entities.getLoginCount()>=3) {
+		    	
+		    	  log.info("Valid data");
+			      return dto;
+		    	
+		    }	
 				if(passwordEncoder.matches(password, entities.getPassword())&& entities.getUserId().equals(userId))
 				{
-			
-				
-			      log.info("Valid data");
-			      return dto;
-				
+	                  return dto;
 				}
 				else
 				{
-					//loginCount++;
-					log.info("Invalid userId or password");
+				   this.aiRepo.findByLogIn(userId, entities.getLoginCount()+1);
+				   
+					log.info("Count to login "+ entities.getLoginCount() +1);
+				  
 					return null;
 				}
-		   /*     if(loginCount>=3)
-		        {
-		        	log.info("Account is locked");
-		        }*/
-				
+		   
+	}		
+		      
 			
 			
 			//System.out.println("Size in dtos " + listOfDTO.size());
 			
 		
-	}
+	
 	
 	
 /*	@Override

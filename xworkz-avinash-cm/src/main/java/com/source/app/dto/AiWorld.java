@@ -32,7 +32,7 @@ public class AiWorld {
 	private String confirmPassword;
 	@Id
 	private int signUpId;
-	private Integer loginCount;
-	
+	private int loginCount;
+	private String resetPasswordToken;
 
 }

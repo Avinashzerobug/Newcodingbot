@@ -31,8 +31,20 @@ public interface AiRepo {
 		return null;
 	}
 
+	default boolean findByLogIn(String userId,int loginCount)
+	{
+		return false;
+	}
+	
+	
  /*	default List<AiEntity> findByUserIdies(String userId) {
 		return null;
 	}*/
+	
+	
+	
+	
+	
+	
 	
 }

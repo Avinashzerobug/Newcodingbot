@@ -103,6 +103,14 @@
 		<artifactId>spring-security-crypto</artifactId>
 		<version>${Passcode.version}</version>	
 	</dependency>	
+	
+	<dependency>
+		<groupId>com.sun.mail</groupId>
+		<artifactId>javax.mail</artifactId>
+		<version>1.6.2</version>		
+	</dependency>
+	
+	
 	</dependencies>
   <packaging>war</packaging>
   <build>

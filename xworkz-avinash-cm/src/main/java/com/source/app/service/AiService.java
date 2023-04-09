@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import javax.mail.internet.AddressException;
 import javax.validation.ConstraintViolation;
 
 import com.source.app.dto.AiWorld;
@@ -32,13 +33,14 @@ public interface AiService {
 		return null;
 	}
 
-	boolean sendMail(String email);
 	
-   default AiWorld findByUserId(String userId,String password,Integer logiCount)
+	
+   default AiWorld findByUserId(String userId,String password)
    {
 	   return null;
    }
    
+  
   
    /*default AiWorld findByUserIdies(String userId,Integer loginCount,String password)
    {
