@@ -156,6 +156,7 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 		return userCount;
 	} 
 
+	/*
 	@Override
 	public boolean sendMail(String email) {
 		String portNumber = "587";// 485,587,25
@@ -191,7 +192,7 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 			e.printStackTrace();
 		}
 		return false;
-	}
+	}*/
 
 
 

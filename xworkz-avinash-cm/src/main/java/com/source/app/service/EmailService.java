@@ -67,7 +67,7 @@ public class EmailService implements EmailServices {
 	        m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 	        m.setSubject(subject);
 	        m.setText(message);
-	        m.setContent(message,"text/html");  //this is for which format you want to receive the otp code it may bord using the html in forgot controller class
+	     //   m.setContent(message,"text/html");  //this is for which format you want to receive the otp code it may bord using the html in forgot controller class
 
 	        Transport.send(m);
 

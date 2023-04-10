@@ -47,16 +47,9 @@
                        </div>
 
 
+					<form action="verify-otp" th:action="@{/verify-otp}" method="post">
 
-
-
-
-
-
-
-					<form action="forgot" th:action="@{/verify-otp}" method="post">
-
-						<input name="OTP" type="text"
+						<input name="otp" type="number"
 							placeholder="Enter your OTP here" class="form-control" />
 
 

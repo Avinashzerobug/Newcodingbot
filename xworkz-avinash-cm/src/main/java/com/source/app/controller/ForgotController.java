@@ -56,7 +56,7 @@ public class ForgotController {
 		if(flag)
 		{
 			
-			session.setAttribute("myOtp", otp);
+		//	session.setAttribute("myOtp", otp);
 			session.setAttribute("email", email);
 			return "verify_otp";
 			
@@ -70,9 +70,9 @@ public class ForgotController {
 	
 	
 	@PostMapping("verify-otp")
-	public String verifyOtp(@RequestParam("otp") Integer otp,HttpSession session,@RequestParam(required = false )String email)
+	public String verifyOtp(@RequestParam("otp") int otp,HttpSession session)
 	{
-		Integer myOtp = (int)session.getAttribute("myOtp");
+		int myOtp = (int)session.getAttribute("myOtp");
 		session.getAttribute("email");
 		if(myOtp==otp)
 		{
