@@ -211,17 +211,18 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 		AiWorld dto = new AiWorld();
 			AiEntity entities = this.aiRepo.findByUserId(userId);
 			
+			
 			BeanUtils.copyProperties(entities, dto); 		    
 		    log.info(entities.getUserId());
 		    log.info(entities.getPassword());
 		    log.info("password converting " + passwordEncoder.matches(password, entities.getPassword()));
 		    
-		    if(entities.getLoginCount()>=3) {
+		 //   if(entities.getLoginCount()>=3) {
 		    	
-		    	  log.info("Valid data");
-			      return dto;
+		    	 // log.info("Valid data");
+			     // return dto;
 		    	
-		    }	
+		//    }	
 				if(passwordEncoder.matches(password, entities.getPassword())&& entities.getUserId().equals(userId))
 				{
 	                  return dto;
@@ -278,7 +279,53 @@ public class AiServiceImplementation implements AiService,RowMapper<AiWorld> {
 	
 	
 	
+  @Override
+public AiWorld findByEmailId(String email) {
+	// TODO Auto-generated method stub
+	  log.info("running the find by email id:");
+	  AiWorld dto = new AiWorld();
+	AiEntity entity =  this.aiRepo.findByEmailId(email);
+	if(email.equals(entity.getEmail()))
+	{
+		return dto;
+	}
+	else
+	{
+		log.info("email id both are not matching");
+	}
+	  
+	return AiService.super.findByEmailId(email);
+}
 
+  
+    @Override
+	public AiWorld changePassword(String userId, String password, String confirmPassword) {
+		
+	
+		
+		
+		if (password.equals(confirmPassword)) {
 
+			boolean passwordUpdated = this.aiRepo.changeByPassword(userId, password, confirmPassword);
+			
+	 
+			//entity.setPassword(passwordEncoder.encode(aiWorld.getPassword()));	
+			//entity.setConfirmPassword(passwordEncoder.encode(aiWorld.getConfirmPassword()));
+	     	
+				
+		log.info("passwordUpdated--" + passwordUpdated);
+         
+		
+		}
+		else
+		{
+			log.info("Something issue in your code");
+		}
+		 
+				
+		return AiService.super.changePassword(userId, password, confirmPassword);
+		
+	}
+  
 
 }

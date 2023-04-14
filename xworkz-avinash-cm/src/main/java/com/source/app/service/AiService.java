@@ -40,8 +40,18 @@ public interface AiService {
 	   return null;
    }
    
+   default AiWorld findByEmailId(String email) {
+	   return null;
+   }
   
   
+   default AiWorld changePassword(String userId,String password,String confirmPassword)
+   {
+	   return null;
+	   
+   }
+   
+   
    /*default AiWorld findByUserIdies(String userId,Integer loginCount,String password)
    {
 	   return null;

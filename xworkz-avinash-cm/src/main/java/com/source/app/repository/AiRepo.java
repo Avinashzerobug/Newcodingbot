@@ -36,6 +36,17 @@ public interface AiRepo {
 		return false;
 	}
 	
+	default AiEntity findByEmailId(String email)
+	{
+		return null;
+	}
+	
+	
+	default boolean changeByPassword(String userId,String password,String confirmPassword)
+	{
+		return false;
+	}
+	
 	
  /*	default List<AiEntity> findByUserIdies(String userId) {
 		return null;

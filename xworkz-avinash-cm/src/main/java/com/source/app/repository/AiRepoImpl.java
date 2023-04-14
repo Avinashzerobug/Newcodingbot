@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.source.app.dto.AiWorld;
@@ -23,6 +24,9 @@ public class AiRepoImpl implements AiRepo {
 
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
+	
+	@Autowired
+    PasswordEncoder passwordEncoder;
 	
 	
 	
@@ -168,10 +172,43 @@ public boolean findByLogIn(String userId, int count) {
 }
 
 
+@Override
+public AiEntity findByEmailId(String email) {
+	EntityManager em = this.entityManagerFactory.createEntityManager();
+	try {
+		Query query = em.createNamedQuery("email");
+		query.setParameter("email", email);
+		Object object = query.getSingleResult();
+		AiEntity value = (AiEntity) object;
+		System.out.println(value);
+		return value;
+
+	} finally {
+		em.close();
+	}
+}
+
+
+@Override
+public boolean changeByPassword(String userId,String password, String confirmPassword) {
+	// TODO Auto-generated method stub
+	EntityManager em = this.entityManagerFactory.createEntityManager();
+	try {
+		
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		Query query = em.createNamedQuery("changepassword");
+		query.setParameter("uu", userId);
+		query.setParameter("pass", passwordEncoder.encode(password));
+		query.setParameter("conf", passwordEncoder.encode(confirmPassword));
+		query.executeUpdate();
+		transaction.commit();
+		return true;
+	} finally {
+		em.close();
+	}
+
 
 }
 	
-
-
-
-
+}

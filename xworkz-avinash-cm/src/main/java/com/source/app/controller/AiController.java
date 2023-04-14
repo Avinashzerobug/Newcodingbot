@@ -52,7 +52,7 @@ public class AiController {
 	
 	
 	@GetMapping("searchByUserIdAndPassWord")
-	public String onfindByUserIdPassword(@RequestParam(required = false ) String userId,@RequestParam(required = false ) String password, Model model) {
+	public String onfindByUserIdPassword(@RequestParam(required = false ) String userId,@RequestParam(required = false ) String password ,Model model) {
 	 
 	//	List<AiWorld> dto2  = this.service.findByUserIdies(userId, loginCount, password);
 		try {

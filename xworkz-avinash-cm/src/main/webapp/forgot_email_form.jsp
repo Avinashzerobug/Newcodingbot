@@ -31,7 +31,17 @@
                 
                 </div>                
                 
+                   <div th:if = "${session.messaging}" class = "container">
+                <div class = "alert alert-danger my-2 text-center" role = "alert">
                 
+                <span th:text = "${session.messaging}"></span>
+               
+                </div>
+                
+                
+                  <th:block th:text = "${session.removeAttribute('messaging')}"></th:block>
+                
+                </div>  
                 
                 
                 

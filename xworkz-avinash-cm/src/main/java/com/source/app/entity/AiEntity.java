@@ -23,6 +23,8 @@ import lombok.Data;
 @NamedQuery(name = "findByUserId",query = "select entity from AiEntity entity where entity.userId=:user")
 @NamedQuery(name="updateLoginCount",query="update AiEntity entity set entity.loginCount=:count where entity.userId=:user")
 //@NamedQuery(name = "findByEmails",query="Select entity from AiEntity entity where entity.email = ?1")
+@NamedQuery(name = "changepassword",query = "update AiEntity entity set entity.password=:pass,entity.confirmPassword=:conf where entity.userId=:uu")
+@NamedQuery(name = "email",query = "select entity from  AiEntity entity where entity.email=:email")
 public class AiEntity {
 
 	@Id

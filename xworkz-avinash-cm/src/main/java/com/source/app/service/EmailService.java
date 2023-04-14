@@ -27,7 +27,7 @@ public class EmailService implements EmailServices {
 
 	@Override
 	public boolean sendEmail(String subject, String message, String to) throws AddressException {
-	    InternetAddress from = new InternetAddress("avinashmullur201@outlook.com");
+	    InternetAddress from = new InternetAddress("avinashmullur.xworkz4246@hotmail.com");
    
 	    
 	  
@@ -54,7 +54,7 @@ public class EmailService implements EmailServices {
 	    Session session = Session.getInstance(properties, new Authenticator() {
 	        @Override
 	        protected PasswordAuthentication getPasswordAuthentication() {
-	            return new PasswordAuthentication("avinashmullur201@outlook.com", "Nexi@42464225");
+	            return new PasswordAuthentication("avinashmullur.xworkz4246@hotmail.com", "Nexi@42464225");
 	        }
 	    });
 

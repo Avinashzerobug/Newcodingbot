@@ -29,6 +29,12 @@
 	</li>
 	   <form id="loginForm" modelAttribute="login" action="searchByUserIdAndPassWord" method="get">
 	   
+	         <div th:if="${param.change}" class = "alert alert-success">
+	         
+	         <p th:text = "${param.change}"></p>
+	         
+	         </div>
+	   
 	       <pre>
                              <label path="userId">UserId: ${userID} </label>
                            
