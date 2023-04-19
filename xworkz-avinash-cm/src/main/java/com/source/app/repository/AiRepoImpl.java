@@ -1,16 +1,21 @@
 package com.source.app.repository;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.source.app.dto.AiWorld;
 import com.source.app.entity.AiEntity;
@@ -131,6 +136,44 @@ public AiEntity findByUserId(String userId) {
 }
 
 
+@Override
+public boolean saveProfilePicture(int signUpId, byte[] profilePicture) {
+    EntityManager manager = this.entityManagerFactory.createEntityManager();
+    EntityTransaction transaction = manager.getTransaction();
+    try {
+        transaction.begin();
+        AiEntity entity = manager.find(AiEntity.class, signUpId);
+        entity.setProfilePicture(profilePicture);
+        manager.persist(entity);
+        transaction.commit();
+        return true;
+    } catch (Exception ex) {
+        if (transaction != null && transaction.isActive()) {
+            transaction.rollback();
+        }
+        ex.printStackTrace();
+        return false;
+    } finally {
+        manager.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 @Override
 public List<AiEntity> findByUserIdies(String userId) {
@@ -211,4 +254,38 @@ public boolean changeByPassword(String userId,String password, String confirmPas
 
 }
 	
+
+@Override
+public boolean saved(int signUpId, byte[] data) {
+    EntityManager entityManager = entityManagerFactory.createEntityManager();
+    EntityTransaction transaction = entityManager.getTransaction();
+
+    try {
+        transaction.begin();
+
+        AiEntity photo = entityManager.find(AiEntity.class, signUpId);
+        photo.setProfilePicture(data);
+
+        entityManager.persist(photo);
+
+        transaction.commit();
+
+        return true;
+    } catch (Exception e) {
+        if (transaction != null) {
+            transaction.rollback();
+        }
+        e.printStackTrace();
+        return false;
+    } finally {
+        entityManager.close();
+    }
+}
+
+
+
+
+
+
+
 }

@@ -1,15 +1,24 @@
 package com.source.app.repository;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.source.app.dto.AiWorld;
 import com.source.app.entity.AiEntity;
 
 
-public interface AiRepo {
+
+public interface AiRepo  {
 
 	boolean saved(AiEntity entity);
+	
+	
+	
 	
 	default List<AiEntity> findAll() {
 		return Collections.emptyList();
@@ -31,6 +40,13 @@ public interface AiRepo {
 		return null;
 	}
 
+	
+	default boolean saveProfilePicture(int signUpId,byte[] profilePicture) {
+		return false;
+	}
+	
+	
+	
 	default boolean findByLogIn(String userId,int loginCount)
 	{
 		return false;
@@ -40,6 +56,9 @@ public interface AiRepo {
 	{
 		return null;
 	}
+	
+	
+	
 	
 	
 	default boolean changeByPassword(String userId,String password,String confirmPassword)
@@ -53,9 +72,6 @@ public interface AiRepo {
 	}*/
 	
 	
-	
-	
-	
-	
+	boolean saved(int signUpId,byte[] data);
 	
 }

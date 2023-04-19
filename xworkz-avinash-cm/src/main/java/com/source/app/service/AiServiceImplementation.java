@@ -1,11 +1,13 @@
 package com.source.app.service;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
 
@@ -21,6 +23,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -30,6 +33,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.persistence.EntityNotFoundException;
 import javax.sql.DataSource;
 
 import com.source.app.dto.AiWorld;
@@ -327,5 +331,19 @@ public AiWorld findByEmailId(String email) {
 		
 	}
   
+    @Override
+    public void savePhoto(MultipartFile file, int signUpId) throws IOException, EntityNotFoundException {
+        byte[] bytes = file.getBytes();
 
-}
+        boolean entityFound = aiRepo.saveProfilePicture(signUpId, bytes);
+
+        if (entityFound) {
+            aiRepo.saved(signUpId, bytes);
+        } else {
+            throw new EntityNotFoundException("Entity with signUpId " + signUpId + " not found");
+        }
+    }
+
+
+    }
+

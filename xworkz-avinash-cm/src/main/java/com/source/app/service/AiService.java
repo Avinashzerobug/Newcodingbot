@@ -1,11 +1,14 @@
 package com.source.app.service;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import javax.mail.internet.AddressException;
 import javax.validation.ConstraintViolation;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.source.app.dto.AiWorld;
 import com.source.app.entity.AiEntity;
@@ -51,6 +54,7 @@ public interface AiService {
 	   
    }
    
+   public void savePhoto(MultipartFile file, int signUpId) throws IOException ;
    
    /*default AiWorld findByUserIdies(String userId,Integer loginCount,String password)
    {

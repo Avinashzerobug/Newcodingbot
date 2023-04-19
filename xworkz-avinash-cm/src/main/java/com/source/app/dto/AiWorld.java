@@ -1,11 +1,17 @@
 package com.source.app.dto;
 
+import java.io.IOException;
+
+import javax.activation.DataSource;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,5 +40,8 @@ public class AiWorld {
 	private int signUpId;
 	private int loginCount;
 	private String resetPasswordToken;
+	private byte[] profilePicture;
+	
+	
 
 }

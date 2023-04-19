@@ -4,6 +4,7 @@ package com.source.app.configuration;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,12 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import com.source.app.dto.AiWorld;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,6 +26,12 @@ import lombok.extern.slf4j.Slf4j;
 @ComponentScan("com.source.app")
 @Slf4j
 public class AiConfiguration {
+	
+	 @Value("${spring.servlet.multipart.max-file-size}")
+	    private String maxFileSize;
+
+	    @Value("${spring.servlet.multipart.max-request-size}")
+	    private String maxRequestSize;
 	
 	
    
@@ -33,12 +43,12 @@ public class AiConfiguration {
 	}
 	
 
-	@Bean
-	public MultipartResolver multipartResolver()
-	{
-	   log.info("Registering the multipart resolver in configuration class");
-	   return new StandardServletMultipartResolver();
-	}
+	//@Bean
+	//public MultipartResolver multipartResolver()
+	//{
+	  // log.info("Registering the multipart resolver in configuration class");
+	   //return new StandardServletMultipartResolver();
+	//}
 	
     @Bean
 	 public LocalContainerEntityManagerFactoryBean containerEntityManagerFactoryBean()
@@ -55,7 +65,8 @@ public class AiConfiguration {
 	}
 	
     
-    public DataSource dataSource() {
+    
+    public DriverManagerDataSource getDataSource() {
 		DriverManagerDataSource datasource = new DriverManagerDataSource();
 		datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		datasource.setUrl("jdbc:mysql://localhost:3306/ai_db");
@@ -69,6 +80,19 @@ public class AiConfiguration {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    
+   
+    
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setMaxUploadSize(10485760); // 10MB
+        return resolver;
+    }
+    
+   
+    
+    
     
     
 }
